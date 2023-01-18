@@ -1,5 +1,7 @@
+import sys
+
 dial = ['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ']
-al = input()
+al = list(sys.stdin.readline())
 time = 0
 
 for i in al:
