@@ -1,7 +1,8 @@
-n = int(input())
+import sys
+n = int(sys.stdin.readline())
 people = {}
 for _ in range(n):
-    name, status = input().split()
+    name, status = sys.stdin.readline().split()
     people[name] = status
     if status == 'leave':
         del people[name]
