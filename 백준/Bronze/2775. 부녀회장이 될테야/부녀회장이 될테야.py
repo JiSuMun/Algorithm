@@ -1,7 +1,8 @@
-T = int(input())
+import sys
+T = int(sys.stdin.readline())
 for t in range(T):
-    k = int(input())
-    n = int(input())
+    k = int(sys.stdin.readline())
+    n = int(sys.stdin.readline())
     people = [i for i in range(1, n+1)] # 0층 1부터 n호까지의 사람수 리스트
     for j in range(k): # 층수만큼 반복
         for a in range(1, n): # 1 ~ n-1 까지 인덱스반복
