@@ -1,16 +1,18 @@
-import sys
-M = int(sys.stdin.readline())
-N = int(sys.stdin.readline())
+M = int(input())
+N = int(input())
 li = []
-for n in range(M, N+1):
-    if n == 1:
-        continue
-    for i in range(2, n):
-        if n % i  == 0:
-            break
-    else:
-        li.append(n)
-if len(li) >= 1:
-    print(f'{sum(li)}\n{min(li)}')
-else:
+for i in range(M, N+1):
+    c = 0
+    if i > 1:
+        for j in range(2, i):
+            if i % j == 0:
+                c += 1
+                break
+        if c == 0:
+            li.append(i)
+
+if len(li) < 1:
     print(-1)
+else:
+    print(sum(li))
+    print(min(li))
