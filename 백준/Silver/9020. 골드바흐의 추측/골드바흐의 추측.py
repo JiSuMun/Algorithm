@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 def Prime():
     P = [False, False] + [True] * 10000
     for i in range(2, 101):
@@ -8,12 +10,12 @@ def Prime():
     T = int(input())
     for _ in range(T):
         n = int(input())
-        a, b = n//2, n//2
+        a = n//2
+        b = a
         for _ in range(10000):
             if P[a] and P[b]:
                 print(a, b)
                 break
-            else:
-                a -= 1
-                b += 1
+            a -= 1
+            b += 1
 Prime()
