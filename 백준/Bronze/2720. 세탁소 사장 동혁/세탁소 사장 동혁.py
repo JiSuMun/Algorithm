@@ -3,11 +3,8 @@ input = sys.stdin.readline
 T = int(input())
 for _ in range(T):
     C = int(input())
-    Q = C//25
-    C -= Q*25
-    D = C//10
-    C -= D*10
-    N = C//5
-    C -= N*5
-    P = C//1
-    print(Q, D, N, P)
+    m_list = []
+    for i in [25, 10, 5, 1]:
+        m_list.append(C//i)
+        C %= i
+    print(*m_list)
