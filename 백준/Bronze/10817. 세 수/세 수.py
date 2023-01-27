@@ -1,4 +1,4 @@
 import sys
 input = sys.stdin.readline
-nums = sorted(list(map(int, input().split())))
+nums = sorted(map(int, input().split()))
 print(nums[1])
