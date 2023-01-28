@@ -1,12 +1,7 @@
-def pelindrome(num):
-    N = len(num)
-    for i in range(N//2):
-        if num[i] != num[N-1-i]:
-            return 'no'
-    return 'yes'
-
+import sys
 while True:
-    num = int(input())
-    if num == 0:
+    n=sys.stdin.readline().rstrip()
+    if n == '0':
         break
-    print(pelindrome(str(num)))
+    else:
+        print("yes") if n == n[::-1] else print("no")
