@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 input = sys.stdin.readline
 for t in range(int(input())):
     nums = list(map(int, input().split()))
