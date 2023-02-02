@@ -1,9 +1,8 @@
 import sys
-from collections import deque
 input = sys.stdin.readline
 N = int(input())
-d = deque([i for i in range(1, N+1)])
-while len(d) > 1:
-    d.popleft()
-    d.rotate(-1)
-print(*d)
+a = 2
+while True:
+    if N == 1 or N == 2: print(N); break
+    a *= 2
+    if a >= N: print((N -(a // 2))* 2); break
