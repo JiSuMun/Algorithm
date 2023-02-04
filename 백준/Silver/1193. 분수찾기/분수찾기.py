@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 X = int(input())
 line = 1
 while X > line:
