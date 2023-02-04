@@ -1,8 +1,7 @@
 import sys
-input = sys.stdin.readline
-li = []
-for _ in range(int(input())):
-    li.append(list(map(int, input().split())))
-li = sorted(li, key = lambda x:(x[1], x[0]))
-for i in li:
-    print(i[0], i[1])
+input = sys.stdin.readlines
+def cond(dot):
+    x, y = dot.split()
+    return int(y) + int(x)/1000000
+dots = sorted(input()[1:], key=lambda x: cond(x))
+print(''.join(dots))
