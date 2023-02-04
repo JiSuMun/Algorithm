@@ -1,17 +1,15 @@
 import sys
-input = sys.stdin.readline
-while 1:
-    s = input().rstrip()
-    if s =='.': break                
-    stack = []
-    result = True    
-    for el in s:
-        if el == '(' or el =='[': stack.append(el)            
-        elif el == ')':
-            if len(stack) == 0 or stack[-1] == '[': result = False; break                             
-            elif stack[-1] == '(': stack.pop()               
-        elif el == ']':
-            if len(stack) == 0 or stack[-1] == '(': result = False; break
-            elif stack[-1] == '[': stack.pop()               
-    if len(stack) == 0 and result == True: print('yes')       
+input=sys.stdin.readline
+while True:
+    s=input().rstrip()
+    if s=='.':break
+    if s.count('(') != s.count(')') or s.count('[') != s.count(']'): print('no'); continue
+    a = ''
+    for i in s:
+        if i in '()[]':
+            a += i
+    while '()' in a or '[]' in a:
+        if '()' in a: a = a.replace('()','')
+        if '[]' in a: a = a.replace('[]','')
+    if a == '': print('yes')
     else: print('no')
