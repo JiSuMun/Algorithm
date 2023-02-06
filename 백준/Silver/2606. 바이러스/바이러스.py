@@ -9,17 +9,10 @@ for _ in range(C):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
-
 def DFS(start):
-    res = 0
-    stack = [start]
     visited[start] = 1
-    while stack:
-        c = stack.pop()
-        for i in graph[c]:
-            if not visited[i]:
-                visited[i] = 1
-                stack.append(i)
-                res += 1
-    print(res)
+    for i in graph[start]:
+        if visited[i] == 0:
+            DFS(i)
 DFS(1)
+print(sum(visited)-1)
