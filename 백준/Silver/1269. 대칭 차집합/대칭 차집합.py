@@ -1,6 +1,6 @@
-import sys
-input = sys.stdin.readline
-A, B = map(int, input().split())
-s1 = set(map(int, input().split()))
-s2 = set(map(int, input().split()))
-print(len((s1-s2) | (s2-s1)))
+a, b = map(int, input().split())
+
+A = list(input().split())
+B = list(input().split())
+
+print(2 * len(set(A + B)) - a - b)
