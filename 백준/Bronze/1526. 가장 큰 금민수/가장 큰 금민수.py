@@ -1,12 +1,10 @@
-import sys
-input = sys.stdin.readline
+def solve(n):
+    res = n
+    if n * 10 + 4 <= N:
+        res = max(res, solve(n * 10 + 4))
+    if n * 10 + 7 <= N:
+        res = max(res, solve(n * 10 + 7))
+    return res
+
 N = int(input())
-while 1:
-    flag = True
-    for i in str(N):
-        if i != '4'  and i != '7':
-            flag = False
-            N -= 1
-    if flag:
-        print(N)
-        break
+print(solve(0))
