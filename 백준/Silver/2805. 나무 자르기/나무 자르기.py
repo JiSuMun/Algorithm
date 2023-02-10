@@ -2,12 +2,19 @@ import sys
 input = sys.stdin.readline
 N, M = map(int, input().split())
 tree = list(map(int, input().split()))
-start, end = 1, max(tree)
-while start <= end:
-    c_tree = 0
-    mid = (start + end) // 2
-    for i in tree:
-        if i >= mid: c_tree += i - mid
-    if c_tree >= M: start = mid + 1
-    else: end = mid -1
-print(end)
+def sol(N, M , tree):
+    ma = max(tree) - 1
+    mi = 1
+    mid = (ma + mi)//2
+    while ma >= mi:
+        cnt = 0
+        for i in tree:
+            if i - mid > 0:
+                cnt += i - mid
+        if cnt >= M:
+            mi = mid + 1
+        else:
+            ma = mid - 1
+        mid = (ma + mi)//2
+    return print(ma)
+sol(N, M ,tree)
