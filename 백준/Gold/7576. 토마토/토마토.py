@@ -1,33 +1,30 @@
 import sys
 from collections import deque
 input = sys.stdin.readline
+dx = [1, -1, 0, 0]
+dy = [0, 0, 1, -1]
+queue = deque()
+box = []
+cnt = -1
 M, N = map(int, input().split())
-tomato = [list(map(int, input().split())) for _ in range(N)]
-q = deque([])
-for y in range(N):
-    for x in range(M):
-        if(tomato[y][x] == 1):
-            q.append([y,x])
-dx = [1,-1,0,0]
-dy = [0,0,1,-1]
-def in_range(y,x):
-    return 0 <= y < N and 0 <= x < M
-cnt = 0
-while q:
-    new_q = deque([])
-    while(q):
-        y, x = q.pop()
+for i in range(N):
+    box.append(list(map(int, input().split())))
+    for j in range(M):
+        if box[i][j] == 1:
+            queue.append((i, j))
+while queue:
+    cnt+=1
+    for _ in range(len(queue)):
+        x, y = queue.popleft()
         for i in range(4):
-            ny, nx = y+dy[i], x+dx[i]
-            if in_range(ny,nx) and tomato[ny][nx] == 0:
-                new_q.append([ny,nx])
-                tomato[ny][nx] = 1
-    cnt += 1
-    q = new_q
-
-for y in range(N):
-    for x in range(M):
-        if(tomato[y][x] == 0):
-            print(-1)
-            exit(0)
-print(cnt-1)
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < N and 0 <= ny < M:
+                if box[nx][ny] == 0:
+                    box[nx][ny] = 1
+                    queue.append((nx, ny))
+for i in box:
+    if 0 in i:
+        cnt =- 1
+        break
+print(cnt)
