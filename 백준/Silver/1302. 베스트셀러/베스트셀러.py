@@ -1,10 +1,14 @@
 import sys
-from collections import Counter
 input = sys.stdin.readline
 N = int(input())
 li = []
-for i in range(N):
-    li.append(input().strip())
-li.sort()    
-new = Counter(li).most_common()
-print(new[0][0])
+d = {}
+best = []
+for _ in range(N):
+    li.append(input().rstrip())
+for i in list(set(li)): d[i] = li.count(i)
+for k in d.keys():
+    if d[k] == max(d.values()):
+        best.append(k)
+best.sort()
+print(best[0])
