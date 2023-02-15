@@ -10,6 +10,6 @@ for i in range(M):
         continue
     a, x = s[0], int(s[1])
     if a == 'add': S.add(x)
-    elif a == 'remove': S.discard(x)
-    elif a == 'check': print(1 if x in S else 0)
-    elif a == 'toggle': S.discard(x) if x in S else S.add(x)
+    if a == 'remove': S.discard(x)
+    if a == 'check': print(1 if x in S else 0)
+    if a == 'toggle': S.discard(x) if x in S else S.add(x)
