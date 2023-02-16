@@ -1,10 +1,8 @@
 import sys
 input = sys.stdin.readline
 a, b = map(int, input().split())
-A = set(map(int, input().split())) # len(A) = a
-B = set(map(int, input().split())) # len(B) = b
-li = []
-for i in A:
-    if i not in B: li.append(i)
+A = list(map(int, input().split()))
+B = set(map(int, input().split())) 
+li = sorted([i for i in A if i not in B])
 print(len(li))
-if len(li) != 0: print(*sorted(li))
+if len(li) != 0: print(*li)
