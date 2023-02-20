@@ -4,6 +4,6 @@ N, K = map(int, input().split())
 A = [int(input()) for _ in range(N)]
 cnt = 0
 for i in range(N-1, -1, -1):
-    cnt += K // A[i]
-    K %= A[i]
+    if K // A[i] > 0: cnt += K // A[i]; K %= A[i]
+    else: continue
 print(cnt)
