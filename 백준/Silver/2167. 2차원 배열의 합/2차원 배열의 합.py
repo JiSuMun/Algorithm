@@ -1,12 +1,15 @@
+from itertools import accumulate
 import sys
 input = sys.stdin.readline
-N, M = map(int, input().split())
-li = [list(map(int, input().split())) for _ in range(N)]
-d = [[0]*(M+1) for _ in range(N+1)]
+N, M = list(map(int, input().split()))
+arr = [None] * (N +1)
+arr[0] = [0 for i in range(M+1)]
 for i in range(1, N+1):
-    for j in range(1, M+1):
-        d[i][j] = li[i-1][j-1] + d[i][j-1] + d[i-1][j] - d[i-1][j-1]
-K = int(input())
-for _ in range(K):
-    i, j, x, y = map(int, input().split())
-    print(d[x][y] - d[x][j-1] - d[i-1][y] + d[i-1][j-1])
+    arr[i] = accumulate(list(map(int, input().split())), initial=0)
+    arr[i] = [x+y for x, y in zip(arr[i-1], arr[i])]
+K = int(input().rstrip())
+ans = [None] * K
+for n in range(K):
+    i, j, x, y = list(map(int, input().split()))
+    ans[n] = arr[x][y] - arr[x][j-1] - arr[i-1][y] + arr[i-1][j-1]
+print(*ans, sep = '\n')
