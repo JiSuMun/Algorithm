@@ -1,9 +1,9 @@
 import sys
 input = sys.stdin.readline
-N = int(input())
-d = [0] * (N+1)
-for i in range(2, N+1):
-    d[i] = d[i-1] + 1
-    if i % 3 == 0: d[i] = min(d[i], d[i//3] + 1)
-    if i % 2 == 0: d[i] = min(d[i], d[i//2] + 1)
-print(d[N])
+d = {1: 0, 2: 1}
+def s(N):
+    if N in d: return d[N]
+    t = 1 + min(s(N//3) + N % 3, s(N//2) + N % 2)
+    d[N] = t
+    return t
+print(s(int(input())))
