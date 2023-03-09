@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 M = int(input())
 N = int(input())
 li = []
