@@ -3,7 +3,7 @@
 # 숫자를 3으로 곱하면 숫자자체가 달라지기 때문에
 # 문자로 바꿔 *3해서 비교한다.
 def solution(numbers):
-    if sum(numbers) == 0: return '0'
+    # if sum(numbers) == 0: return '0'
     numbers = list(map(str, numbers)) # 문자열 리스트로 만들어줌
     numbers.sort(key = lambda x:x*3, reverse = True)
     return str(int(''.join(numbers)))
