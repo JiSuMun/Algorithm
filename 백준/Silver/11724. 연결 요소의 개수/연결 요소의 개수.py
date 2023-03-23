@@ -1,21 +1,18 @@
 import sys
 input = sys.stdin.readline
 from collections import deque
+sys.setrecursionlimit(10000)
 
-def bfs(start):
-    d = deque([start])
+def dfs(start, depth):
     visited[start] = True
-    while d:
-        node = d.popleft()
-        for i in graph[node]:
-            if not visited[i]:
-                visited[i] = True
-                d.append(i)
+    for i in graph[start]:
+        if not visited[i]:
+            dfs(i, depth+1)
 
 N, M = map(int, input().split())
+graph = [[] for _ in range(N + 1)]
 
-graph = [[] for _ in range(N+1)]
-for i in range(M):
+for _ in range(M):
     u, v = map(int, input().split())
     graph[u].append(v)
     graph[v].append(u)
@@ -30,6 +27,6 @@ for i in range(1, N+1):
             cnt += 1
             visited[i] = True # 방문처리
         else: # 연결 된 점이 있다면
-            bfs(i)
+            dfs(i, 0)
             cnt += 1
 print(cnt)
