@@ -1,10 +1,11 @@
-C = int(input())
+n = int(input())
 
-for _ in range(1, C+1):
-    N_list = list(map(int, input().split()))
-    average = sum(N_list[1:])/N_list[0]
+for _ in range(n):
+    nums = list(map(int, input().split()))
+    avg = sum(nums[1:])/nums[0]
     cnt = 0
-    for i in N_list[1:]:
-        if i > average:
+    for score in nums[1:]:
+        if score > avg:
             cnt += 1
-    print(f'{cnt/N_list[0]*100:.3f}%')
+    rate = cnt/nums[0] *100
+    print(f'{rate:.3f}%')
