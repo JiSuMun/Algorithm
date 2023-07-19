@@ -1,19 +1,13 @@
 import sys
 input = sys.stdin.readline
+from collections import Counter
 
-n,m = map(int, input().split())
-d = {}
-for _ in range(n):
-	name = input().strip()
-	if len(name) < m:
-		continue
-
-	if d.get(name):
-		d[name][0] += 1
-	else:
-		d[name] = [1, len(name), name]
-
-ans = sorted(d.items(), key= lambda x: (-x[1][0], -x[1][1], x[1][2]))
-
-for a in ans:
-	print(a[0])
+N, M = map(int, input().split())
+d = Counter([i for _ in range(N) if len(i:= input().strip()) >= M])
+# 알파벳 사전 순
+res = sorted(list(d.keys()))
+# 길이 순
+res.sort(key=len, reverse=True)
+# 빈도수
+res.sort(key=d.get,reverse=True)
+print('\n'.join(res))
