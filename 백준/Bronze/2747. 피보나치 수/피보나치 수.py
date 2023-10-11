@@ -4,11 +4,10 @@ input = sys.stdin.readline
 
 dp = [0] * 46
 
+dp[1], dp[2] = 1, 1
+
 
 def fibo(x):
-    # 종료 조건 (1 혹은 2일 때 1을 반환)
-    if x == 1 or x == 2:
-        return 1
     # 이미 계산한 적 있는 문제라면 그대로 반환
     if dp[x] != 0:
         return dp[x]
